@@ -1,5 +1,5 @@
 ---
-title: "regression"
+title: "Regression"
 author: "Akira MATSUI"
 date: 
 output: pdf_document
@@ -58,49 +58,23 @@ summary(result)
 
 `Stargayzer` makes your result attractive. If you do not have `stargayzer` library, you can get and load it via
 
-```{r eval=FALSE, error=FALSE}
-install.packages('stargayzer')
+```{r eval=FALSE}
+install.packages("stargayzer")
 library(stargazer)
 ```
 .
 
 It convert `result` to latex format.
 
-```{r eval=FALSE ,error=FALSE}
+```{r eval=FALSE,error=FALSE}
 stargazer(result)
 ```
 
 
-It also provides a text format
+It also provides a text format.
 
 
-```{r eval=FALSE, error=FALSE}
+```{r, error=TRUE}
+#library(stargazer)
 stargazer(result, type="text")
-```
-```
-===============================================
-                        Dependent variable:    
-                    ---------------------------
-                           Sepal.Length        
------------------------------------------------
-Sepal.Width                  0.651***          
-                              (0.067)          
-                                               
-Petal.Length                 0.709***          
-                              (0.057)          
-                                               
-Petal.Width                  -0.556***         
-                              (0.128)          
-                                               
-Constant                     1.856***          
-                              (0.251)          
-                                               
------------------------------------------------
-Observations                    150            
-R2                             0.859           
-Adjusted R2                    0.856           
-Residual Std. Error      0.315 (df = 146)      
-F Statistic          295.539*** (df = 3; 146)  
-===============================================
-Note:               *p<0.1; **p<0.05; ***p<0.01
 ```
