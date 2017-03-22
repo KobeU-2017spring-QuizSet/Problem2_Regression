@@ -1,0 +1,79 @@
+---
+title: "regression"
+author: "Akira MATSUI"
+date: 
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Using Regression to a report
+
+
+When you want to use R as a data analysis tool, you must be writing a paper for some propose (for example, a term paper, report ..etc). In this exercise, you firstly conduct a simple regression analysis by using the built in iris data set . Next, you will wrap up an analyzed data and write a paper on `LaTex` format by using `stargaizer`.
+
+# Questions
+
+- Regress Sepal.Length with Sepal.Width, Petal.Length and Petal.Width
+- Use stargaizer your result to a latex format 
+- convert latex to pdf
+
+
+# Sample Answer
+
+## Iris Data
+
+`R` already has Iris data set. You can check it by
+
+```{r eval=FALSE, echo=TRUE, error=FALSE}
+iris #
+```
+.
+
+If you want to see `Sepal.Length` of iris data, you can access it by
+
+```{r eval=FALSE, echo=TRUE, error=FALSE}
+iris["Sepal.Length"]
+```
+
+## Regression
+
+R provide regression function `lm()`
+
+```
+lm(dependent variable ~ independent variable0 + independent variable1 + ... , data="Data Frame" )
+```
+
+In this case, `Data Frame` is `iris`. The regression analysis we are supposed to conduct is 
+
+```{r eval=FALSE, error=FALSE}
+result <- lm (Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width , data=iris)
+summary(result)
+```
+.
+
+## Stargayzer
+
+`Stargayzer` makes your result attractive. If you do not have `stargayzer` library, you can get and load it via
+
+```{r eval=FALSE, error=FALSE}
+install.packages('stargayzer')
+library(stargazer)
+```
+.
+
+It convert `result` to latex format.
+
+```{r eval=FALSE, error=FALSE}
+stargazer(result)
+```
+
+
+It also provides a text format
+
+
+```{r eval=FALSE, error=FALSE}
+stargazer(result, type="text")
+```
