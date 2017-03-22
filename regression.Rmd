@@ -27,15 +27,15 @@ When you want to use R as a data analysis tool, you must be writing a paper for 
 
 `R` already has Iris data set. You can check it by
 
-```{r eval=FALSE, echo=TRUE, error=FALSE}
-iris #
+```{r eval=TRUE, echo=TRUE, error=FALSE}
+head(iris)
 ```
 .
 
 If you want to see `Sepal.Length` of iris data, you can access it by
 
-```{r eval=FALSE, echo=TRUE, error=FALSE}
-iris["Sepal.Length"]
+```{r, echo=TRUE, error=FALSE}
+head(iris["Sepal.Length"])
 ```
 
 ## Regression
@@ -48,7 +48,7 @@ lm(dependent variable ~ independent variable0 + independent variable1 + ... , da
 
 In this case, `Data Frame` is `iris`. The regression analysis we are supposed to conduct is 
 
-```{r eval=FALSE, error=FALSE}
+```{r, error=FALSE, results=TRUE}
 result <- lm (Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width , data=iris)
 summary(result)
 ```
@@ -66,7 +66,7 @@ library(stargazer)
 
 It convert `result` to latex format.
 
-```{r eval=FALSE, error=FALSE}
+```{r eval=FALSE ,error=FALSE}
 stargazer(result)
 ```
 
@@ -76,4 +76,31 @@ It also provides a text format
 
 ```{r eval=FALSE, error=FALSE}
 stargazer(result, type="text")
+```
+```
+===============================================
+                        Dependent variable:    
+                    ---------------------------
+                           Sepal.Length        
+-----------------------------------------------
+Sepal.Width                  0.651***          
+                              (0.067)          
+                                               
+Petal.Length                 0.709***          
+                              (0.057)          
+                                               
+Petal.Width                  -0.556***         
+                              (0.128)          
+                                               
+Constant                     1.856***          
+                              (0.251)          
+                                               
+-----------------------------------------------
+Observations                    150            
+R2                             0.859           
+Adjusted R2                    0.856           
+Residual Std. Error      0.315 (df = 146)      
+F Statistic          295.539*** (df = 3; 146)  
+===============================================
+Note:               *p<0.1; **p<0.05; ***p<0.01
 ```
